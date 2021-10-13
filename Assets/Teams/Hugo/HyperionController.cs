@@ -30,7 +30,7 @@ namespace Hyperion
 			behaviourTree.SetVariableValue("EnergyLevel", spaceship.Energy);
 			behaviourTree.SetVariableValue("Score",  (float)spaceship.Score);
 			behaviourTree.SetVariableValue("EnemyPosition",  otherSpaceship.Position);
-			behaviourTree.SetVariableValue("ClosestPoint",data.WayPoints[0].Position);
+			behaviourTree.SetVariableValue("ClosestPoint",data.WayPoints[1].Position);
 			
 			thrust = 1.0f;
 			
