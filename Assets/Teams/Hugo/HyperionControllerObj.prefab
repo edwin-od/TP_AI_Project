@@ -50,6 +50,7 @@ MonoBehaviour:
   needMine: 0
   needShockwawe: 0
   Orientation: 0
+  PointSet: 0
   behaviourTree: {fileID: 6599835501220112678}
 --- !u!114 &6599835501220112678
 MonoBehaviour:
@@ -85,13 +86,15 @@ MonoBehaviour:
         Rotation","Instant":true,"SharedGameObjecttargetGameObject":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":null},"SharedQuaternionstoreValue":{"Type":"BehaviorDesigner.Runtime.SharedQuaternion","Name":null,"IsShared":true,"QuaternionmValue":"(0,0,0,1)"}},{"Type":"IIM.CompareBool","NodeData":{"Offset":"(237.166809,-324.583435)"},"ID":4,"Name":"Compare
         Bool","Instant":true,"SharedBoolvariable":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoolcompareTo":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false}},{"Type":"IIM.CompareFloat","NodeData":{"Offset":"(77.16681,-264.583435)"},"ID":5,"Name":"Compare
         Float","Instant":true,"SharedFloatvariable":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"OPERATORop":"EQUAL","SharedFloatcompareTo":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0}},{"Type":"DropMinetask","NodeData":{"Offset":"(-122.833191,-204.583435)"},"ID":6,"Name":"Drop
-        Minetask","Instant":true}],"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedVector2","Name":"ClosestPoint","IsShared":true,"Vector2mValue":"(0,0)"},{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"EnergyLevel","IsShared":true,"SinglemValue":0},{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"Score","IsShared":true,"SinglemValue":0},{"Type":"BehaviorDesigner.Runtime.SharedVector2","Name":"EnemyPosition","IsShared":true,"Vector2mValue":"(0,0)"}]}'
+        Minetask","Instant":true},{"Type":"TaskGoTo","NodeData":{"Offset":"(157.666809,-474.583435)","WatchedFields":["target"]},"ID":7,"Name":"Task
+        Go To","Instant":true,"BehaviorTreebehaviourTree":0,"SharedVector2target":{"Type":"BehaviorDesigner.Runtime.SharedVector2","Name":"ClosestPoint","IsShared":true,"Vector2mValue":"(0,0)"},"SharedVector2Player":{"Type":"BehaviorDesigner.Runtime.SharedVector2","Name":null,"Vector2mValue":"(0,0)"}}],"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedVector2","Name":"ClosestPoint","IsShared":true,"Vector2mValue":"(0,0)"},{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"EnergyLevel","IsShared":true,"SinglemValue":0},{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"Score","IsShared":true,"SinglemValue":0},{"Type":"BehaviorDesigner.Runtime.SharedVector2","Name":"EnemyPosition","IsShared":true,"Vector2mValue":"(0,0)"},{"Type":"BehaviorDesigner.Runtime.SharedVector2","Name":"PlayerPosition","IsShared":true,"Vector2mValue":"(0,0)"}]}'
       fieldSerializationData:
         typeName: []
         fieldNameHash: 
         startIndex: 
         dataPosition: 
-        unityObjects: []
+        unityObjects:
+        - {fileID: 6599835501220112678}
         byteData: 
         byteDataArray: 
       Version: 1.7.1
