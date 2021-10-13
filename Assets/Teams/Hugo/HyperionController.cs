@@ -18,6 +18,7 @@ namespace Hyperion
         public bool PointSet = false;
         public bool shipDrifting = false;
         public float detectionRange;
+        public GameData currentData;
 
         public BehaviorTree behaviourTree;
 
@@ -28,6 +29,7 @@ namespace Hyperion
 
         public override InputData UpdateInput(SpaceShipView spaceship, GameData data)
         {
+            currentData = data;
             SpaceShipView otherSpaceship = data.GetSpaceShipForOwner(1 - spaceship.Owner);
             if (!PointSet)
             {
@@ -39,25 +41,39 @@ namespace Hyperion
             behaviourTree.SetVariableValue("PlayerPosition", spaceship.Position);
 
             Vector2 closestPos = Vector2.zero;
-
             for (int i = 0; i < data.WayPoints.Count; i++)
             {
                 if ((data.WayPoints[i].Owner == otherSpaceship.Owner || data.WayPoints[i].Owner == -1))
                 {
-                    if (closestPos == Vector2.zero)
+                    bool ignore = false;
+                    Vector2 shipToWaypoint = new Vector2(data.WayPoints[i].Position.x - spaceship.Position.x, data.WayPoints[i].Position.y - spaceship.Position.y);
+                    Debug.DrawRay(spaceship.Position, shipToWaypoint, Color.red);
+                    RaycastHit2D[] hits = Physics2D.RaycastAll(spaceship.Position, shipToWaypoint.normalized, shipToWaypoint.magnitude);
+                    for (int k = 0; k < hits.Length; k++)
                     {
-                        closestPos = data.WayPoints[i].Position;
-                        continue;
+                        if (hits[k].collider)
+                        {
+                            Debug.Log(hits[k].transform.gameObject.name);
+                            if (hits[k].transform.tag == "Asteroid")
+                                ignore = true;
+                        }
                     }
 
-                    float angle = Vector2.SignedAngle(spaceship.Position, data.WayPoints[i].Position);
-                    angle = NormaliseValue(angle);
-                    
-
-                    if (Vector2.Distance(spaceship.Position, closestPos) > Vector2.Distance(spaceship.Position, data.WayPoints[i].Position) && (angle < 10 || angle > 350))
+                    if (!ignore)
                     {
-                        closestPos = data.WayPoints[i].Position;
-                        Debug.Log(angle);
+                        if (closestPos == Vector2.zero)
+                        {
+                            closestPos = data.WayPoints[i].Position;
+                            continue;
+                        }
+
+                        float angle = Vector2.SignedAngle(spaceship.Position, data.WayPoints[i].Position);
+                        angle = NormaliseValue(angle);
+
+                        if (Vector2.Distance(spaceship.Position, closestPos) > Vector2.Distance(spaceship.Position, data.WayPoints[i].Position))// && (angle < 10 || angle > 350))
+                        {
+                            closestPos = data.WayPoints[i].Position;
+                        }
                     }
                 }
             }
