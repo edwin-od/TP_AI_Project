@@ -14,9 +14,9 @@ namespace Hyperion
 		public bool needShoot = false;
 		public bool needMine = false;
 		public bool needShockwawe = false;
-		public float Orientation = 0f;
+		public SharedFloat Orientation = 0f;
 		public bool PointSet =  false;
-
+		
 
 		public BehaviorTree behaviourTree;
 
@@ -36,11 +36,15 @@ namespace Hyperion
 			behaviourTree.SetVariableValue("Score",  (float)spaceship.Score);
 			behaviourTree.SetVariableValue("EnemyPosition",  otherSpaceship.Position);
 			behaviourTree.SetVariableValue("PlayerPosition",  spaceship.Position);
+			Orientation = (SharedFloat)behaviourTree.GetVariable("Orientation");
 			
-			
+            
+            
+			targetOrient = Orientation.Value ;
+            
 			thrust = 1.0f;
 			
-			targetOrient = Orientation;
+			
 			needShoot = AimingHelpers.CanHit(spaceship, otherSpaceship.Position, otherSpaceship.Velocity, 0.15f);
 			InputData input =new InputData(thrust, targetOrient, needShoot, needMine, needShockwawe);
 			needMine = false;
