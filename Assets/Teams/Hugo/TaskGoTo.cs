@@ -34,11 +34,16 @@ public class TaskGoTo : Action
             hyperion.isBlocked = true;
             return TaskStatus.Failure;
         }
-        if (Vector2.Distance(target.Value, Player.Value) > hyperion.currentData.WayPoints[0].Radius)
+
+        if (Vector2.Distance(target.Value, Player.Value) > hyperion.currentData.WayPoints[0].Radius+hyperion.mySpaceship.Radius)
         {
-            for (int i = 0; i < hyperion.currentData.WayPoints.Count; i++) {
-                if (hyperion.currentData.WayPoints[i].Position == target.Value) {
-                    if (hyperion.mySpaceship.Owner == hyperion.currentData.WayPoints[i].Owner) {
+            for (int i = 0; i < hyperion.currentData.WayPoints.Count; i++)
+            {
+                if (hyperion.currentData.WayPoints[i].Position == target.Value)
+                {
+                    if (hyperion.mySpaceship.Owner == hyperion.currentData.WayPoints[i].Owner)
+                    {
+                        Debug.Log("FAILEDWORLD");
                         return TaskStatus.Failure;
                     }
                 }
