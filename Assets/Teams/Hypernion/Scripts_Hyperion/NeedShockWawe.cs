@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 
-namespace Hyperion
+namespace Hyperion1
 {
     public class NeedShockWawe : Action
     {

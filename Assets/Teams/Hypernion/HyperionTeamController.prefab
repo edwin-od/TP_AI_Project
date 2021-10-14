@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7672329417856911656
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 995883328052245445}
+  - component: {fileID: 5933439843330714093}
+  - component: {fileID: 3039252958360588374}
+  m_Layer: 0
+  m_Name: HyperionTeamController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &995883328052245445
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672329417856911656}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.1233454, y: -2.9148889, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5933439843330714093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672329417856911656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b1a501201ef3c4580e3bda99173dde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrust: 0
+  targetOrient: 0
+  needShoot: 0
+  needMine: 0
+  needShockwawe: 0
+  Orientation:
+    mIsShared: 0
+    mIsGlobal: 0
+    mIsDynamic: 0
+    mName: 
+    mToolTip: 
+    mPropertyMapping: 
+    mPropertyMappingOwner: {fileID: 0}
+    mValue: 0
+  PointSet: 0
+  shipDrifting: 0
+  detectionRange: 0
+  isBlocked: 0
+  behaviourTree: {fileID: 3039252958360588374}
+--- !u!114 &3039252958360588374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672329417856911656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d7b55c7ecdb49a4a89fa5e6f9022861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startWhenEnabled: 1
+  asynchronousLoad: 0
+  pauseWhenDisabled: 0
+  restartWhenComplete: 0
+  logTaskChanges: 0
+  group: 0
+  resetValuesOnRestart: 0
+  externalBehavior: {fileID: 0}
+  mBehaviorSource:
+    behaviorName: Behavior
+    behaviorDescription: 
+    mTaskData:
+      types: []
+      parentIndex: 
+      startIndex: 
+      variableStartIndex: 
+      JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(315.5,30)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(-1.1676445,134.376892)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Parallel","NodeData":{"Offset":"(-2.87217045,117.97052)"},"ID":2,"Name":"Parallel","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(-287.777863,173.375977)"},"ID":3,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(3.10653687,123.801819)"},"ID":4,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"IIM.CheckDistance","NodeData":{"Offset":"(-112.824783,133.2132)"},"ID":5,"Name":"Check
+        Distance","Instant":true,"SharedVector2A":{"Type":"BehaviorDesigner.Runtime.SharedVector2","Name":"EnemyPosition","IsShared":true,"Vector2mValue":"(0,0)"},"SharedVector2B":{"Type":"BehaviorDesigner.Runtime.SharedVector2","Name":"PlayerPosition","IsShared":true,"Vector2mValue":"(0,0)"},"OPERATORop":"LOWER","SharedFloatdistance":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"Shockwave
+        Distance","IsShared":true,"SinglemValue":2.9}},{"Type":"Hyperion.ShockWave","NodeData":{"Offset":"(92.14789,132.101059)"},"ID":6,"Name":"Shock
+        Wave","Instant":true}]}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(293.333557,166.666809)"},"ID":7,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(-9.15527344E-05,110.000031)"},"ID":8,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-153.333344,163.333374)"},"ID":9,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"IIM.CheckDistance","NodeData":{"Offset":"(-240.367508,115.914)"},"ID":10,"Name":"Check
+        Distance","Instant":true,"SharedVector2A":{"Type":"BehaviorDesigner.Runtime.SharedVector2","Name":"EnemyPosition","IsShared":true,"Vector2mValue":"(0,0)"},"SharedVector2B":{"Type":"BehaviorDesigner.Runtime.SharedVector2","Name":"PlayerPosition","IsShared":true,"Vector2mValue":"(0,0)"},"OPERATORop":"LOWER","SharedFloatdistance":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"AggroRange","IsShared":true,"SinglemValue":8}},{"Type":"IIM.CheckDistance","NodeData":{"Offset":"(-77.14185,121.211914)"},"ID":11,"Name":"Check
+        Distance","Instant":true,"SharedVector2A":{"Type":"BehaviorDesigner.Runtime.SharedVector2","Name":"EnemyPosition","IsShared":true,"Vector2mValue":"(0,0)"},"SharedVector2B":{"Type":"BehaviorDesigner.Runtime.SharedVector2","Name":"PlayerPosition","IsShared":true,"Vector2mValue":"(0,0)"},"OPERATORop":"GREATER","SharedFloatdistance":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"AggroRange","IsShared":true,"SinglemValue":8}},{"Type":"Hyperion.GoTo","NodeData":{"Offset":"(68.701416,120.568054)"},"ID":12,"Name":"Go
+        To","Instant":true,"BehaviorTreebehaviourTree":0,"SharedVector2target":{"Type":"BehaviorDesigner.Runtime.SharedVector2","Name":"EnemyPosition","IsShared":true,"Vector2mValue":"(0,0)"},"SharedVector2Player":{"Type":"BehaviorDesigner.Runtime.SharedVector2","Name":"PlayerPosition","IsShared":true,"Vector2mValue":"(0,0)"},"Singlecount":0,"SingleabandonTime":3}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(200,170)"},"ID":13,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"Hyperion.FindWaypoint","NodeData":{"Offset":"(-84.11989,146.595947)"},"ID":14,"Name":"Find
+        Waypoint","Instant":true,"BehaviorTreebehaviourTree":1},{"Type":"Hyperion.GoTo","NodeData":{"Offset":"(49.7260742,150.054749)"},"ID":15,"Name":"Go
+        To","Instant":true,"BehaviorTreebehaviourTree":2,"SharedVector2target":{"Type":"BehaviorDesigner.Runtime.SharedVector2","Name":"TargetPos","IsShared":true,"Vector2mValue":"(0,0)"},"SharedVector2Player":{"Type":"BehaviorDesigner.Runtime.SharedVector2","Name":"PlayerPosition","IsShared":true,"Vector2mValue":"(0,0)"},"Singlecount":0,"SingleabandonTime":3},{"Type":"IIM.CompareFloat","NodeData":{"Offset":"(173.333252,153.333618)"},"ID":16,"Name":"Compare
+        Float","Instant":true,"SharedFloatvariable":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"EnergyLevel","IsShared":true,"SinglemValue":0},"OPERATORop":"GREATER","SharedFloatcompareTo":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"EnergyLevelMine","IsShared":true,"SinglemValue":0.5}},{"Type":"Hyperion.DropMine","NodeData":{"Offset":"(296.666626,153.333618)"},"ID":17,"Name":"Drop
+        Mine","Instant":true}]}]}]}]}]},"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"EnergyLevel","IsShared":true,"SinglemValue":0},{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"Score","IsShared":true,"SinglemValue":0},{"Type":"BehaviorDesigner.Runtime.SharedVector2","Name":"EnemyPosition","IsShared":true,"Vector2mValue":"(0,0)"},{"Type":"BehaviorDesigner.Runtime.SharedVector2","Name":"PlayerPosition","IsShared":true,"Vector2mValue":"(0,0)"},{"Type":"BehaviorDesigner.Runtime.SharedVector2","Name":"TargetPos","IsShared":true,"Vector2mValue":"(0,0)"},{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"Shockwave
+        Distance","IsShared":true,"SinglemValue":2.9},{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"Rotation","IsShared":true,"SinglemValue":0},{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"AggroRange","IsShared":true,"SinglemValue":8},{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"EnergyLevelMine","IsShared":true,"SinglemValue":0.5},{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"AggroMinusTooClose","IsShared":true,"SinglemValue":4}]}'
+      fieldSerializationData:
+        typeName: []
+        fieldNameHash: 
+        startIndex: 
+        dataPosition: 
+        unityObjects:
+        - {fileID: 3039252958360588374}
+        - {fileID: 3039252958360588374}
+        - {fileID: 3039252958360588374}
+        byteData: 
+        byteDataArray: 
+      Version: 1.7.1
+  gizmoViewMode: 2
+  showBehaviorDesignerGizmo: 1

@@ -62,7 +62,7 @@ MonoBehaviour:
   shipDrifting: 0
   detectionRange: 0
   isBlocked: 0
-  behaviourTree: {fileID: 6599835501220112678}
+  behaviourTree: {fileID: 0}
 --- !u!114 &6599835501220112678
 MonoBehaviour:
   m_ObjectHideFlags: 0

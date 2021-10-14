@@ -4,7 +4,7 @@ using UnityEngine;
 using DoNotModify;
 using BehaviorDesigner.Runtime;
 
-namespace Hyperion
+namespace Hyperion1
 {
     public class HyperionController : BaseSpaceShipController
     {

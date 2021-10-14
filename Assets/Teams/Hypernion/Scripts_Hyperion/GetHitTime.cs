@@ -5,7 +5,7 @@ using DoNotModify;
 using BehaviorDesigner.Runtime.Tasks;
 using BehaviorDesigner.Runtime;
 
-namespace Hyperion
+namespace Hyperion1
 {
     public class GetHitTime : Action
     {
