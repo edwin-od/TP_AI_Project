@@ -24,7 +24,7 @@ public class TaskGoTo : Action
         float rot = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
         behaviourTree.SetVariableValue("Rotation", rot);
 
-        return TaskStatus.Running;
+        return TaskStatus.Success;
     }
 
 }
