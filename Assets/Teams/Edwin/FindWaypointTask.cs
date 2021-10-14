@@ -42,15 +42,20 @@ public class FindWaypointTask : Action
 
                     //float offsetMultiplier = 180;
                     //float angleOffset = offsetMultiplier / spaceship.Velocity.magnitude ; //*
-                    float angleOffset = 60; //*
+                    float angleOffset = 70; //*
 
                     if (spaceship.Owner != hyperion.currentData.WayPoints[i].Owner && Vector2.Distance(spaceship.Position, closestPos) > Vector2.Distance(spaceship.Position, hyperion.currentData.WayPoints[i].Position) && (angle < angleOffset || angle > 360 - angleOffset))
                     {
-                        closestPos = hyperion.currentData.WayPoints[i].Position;
+                        if (!hyperion.isBlocked || (hyperion.isBlocked && (Vector2)behaviourTree.GetVariable("TargetPos").GetValue() != hyperion.currentData.WayPoints[i].Position))
+                        {
+                            closestPos = hyperion.currentData.WayPoints[i].Position;
+                        }
+                        
                     }
                 }
             }
         }
+        hyperion.isBlocked = false;
         behaviourTree.SetVariableValue("TargetPos", closestPos);
     }
 

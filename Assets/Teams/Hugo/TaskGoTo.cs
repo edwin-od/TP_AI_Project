@@ -12,6 +12,8 @@ public class TaskGoTo : Action
     private HyperionController hyperion;
     public SharedVector2 target;
     public SharedVector2 Player;
+    float count;
+    public float abandonTime = 4;
    // public float SlowDownRadiusMultiplier;
 
     public override void OnStart()
@@ -20,10 +22,20 @@ public class TaskGoTo : Action
         Vector2 diff = target.Value - Player.Value;
         float rot = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
         behaviourTree.SetVariableValue("Rotation", rot);
+        count = 0;
     }
     public override TaskStatus OnUpdate()
     {
-        for(int i=0; i < hyperion.currentData.WayPoints.Count; i++) {
+        //if()
+        count += Time.deltaTime;
+        Debug.Log("count : " + hyperion.mySpaceship.Owner + " || "  + count);
+        if (count >= abandonTime)
+        {
+            hyperion.isBlocked = true;
+            return TaskStatus.Failure;
+        }
+
+        for (int i=0; i < hyperion.currentData.WayPoints.Count; i++) {
             if(hyperion.currentData.WayPoints[i].Position == target.Value) {
                 if (hyperion.mySpaceship.Owner == hyperion.currentData.WayPoints[i].Owner) {
                     return TaskStatus.Failure;
