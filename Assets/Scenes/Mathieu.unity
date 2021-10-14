@@ -203,7 +203,7 @@ PrefabInstance:
     - target: {fileID: 821512576268259774, guid: 889ab55f6899dc042bed0f84c9d18bcd,
         type: 3}
       propertyPath: m_GravityScale
-      value: 1000
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 889ab55f6899dc042bed0f84c9d18bcd, type: 3}
@@ -3288,7 +3288,7 @@ MonoBehaviour:
   - {fileID: 102627782}
   - {fileID: 87004202}
   _debugControllerSO: {fileID: 11400000, guid: f1b8b3b2876be244d9107938012a5207, type: 2}
-  _gameDuration: 60
+  _gameDuration: 360
 --- !u!4 &1710512732
 Transform:
   m_ObjectHideFlags: 0
