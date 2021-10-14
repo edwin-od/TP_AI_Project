@@ -20,7 +20,7 @@ namespace Hyperion
         public float detectionRange;
         public GameData currentData;
         public SpaceShipView mySpaceship;
-
+        public bool isBlocked = false;
         public BehaviorTree behaviourTree;
 
         public override void Initialize(SpaceShipView spaceship, GameData data)
@@ -40,72 +40,13 @@ namespace Hyperion
             }
             behaviourTree.SetVariableValue("EnergyLevel", spaceship.Energy);
             behaviourTree.SetVariableValue("Score", (float)spaceship.Score);
-            //behaviourTree.SetVariableValue("EnemyPosition",  otherSpaceship.Position);
+            behaviourTree.SetVariableValue("EnemyPosition",  otherSpaceship.Position);
             behaviourTree.SetVariableValue("PlayerPosition", spaceship.Position);
-
-            /*Vector2 closestPos = Vector2.zero;
-            for (int i = 0; i < data.WayPoints.Count; i++)
-            {
-                if ((data.WayPoints[i].Owner == otherSpaceship.Owner || data.WayPoints[i].Owner == -1))
-                {
-                    bool ignore = false;
-                    Vector2 shipToWaypoint = new Vector2(data.WayPoints[i].Position.x - spaceship.Position.x, data.WayPoints[i].Position.y - spaceship.Position.y);
-                    Debug.DrawRay(spaceship.Position, shipToWaypoint, Color.red);
-                    RaycastHit2D[] hits = Physics2D.RaycastAll(spaceship.Position, shipToWaypoint.normalized, shipToWaypoint.magnitude);
-                    for (int k = 0; k < hits.Length; k++)
-                    {
-                        if (hits[k].collider)
-                        {
-                            Debug.Log(hits[k].transform.gameObject.name);
-                            if (hits[k].transform.tag == "Asteroid")
-                                ignore = true;
-                        }
-                    }
-
-                    if (!ignore)
-                    {
-                        if (closestPos == Vector2.zero)
-                        {
-                            closestPos = data.WayPoints[i].Position;
-                            continue;
-                        }
-
-                        float angle = Vector2.SignedAngle(spaceship.Position, data.WayPoints[i].Position);
-                        angle = NormaliseValue(angle);
-
-                        if (Vector2.Distance(spaceship.Position, closestPos) > Vector2.Distance(spaceship.Position, data.WayPoints[i].Position))// && (angle < 10 || angle > 350))
-                        {
-                            closestPos = data.WayPoints[i].Position;
-                        }
-                    }
-                }
-            }
-            behaviourTree.SetVariableValue("TargetPos", closestPos);*/
 
             Orientation = (SharedFloat)behaviourTree.GetVariable("Rotation");
 
             targetOrient = NormaliseValue(Orientation.Value);
 
-            //Debug.Log("cpcococol : " + Vector2.Distance(spaceship.Position, closestPos));
-            //if(Vector2.Distance(spaceship.Position, closestPos) < 2f)
-            //{
-            //    thrust = 0.3f;
-            //}
-            //else 
-            //{
-            //    thrust = 1f;
-            //}
-
-            //if (spaceship.Orientation < highBound && spaceship.Orientation > lowBound)
-            //{
-            //     thrust = 1f;
-
-            //}else
-            //{
-            //    thrust = 1f;
-            //}
-
-            needShoot = AimingHelpers.CanHit(spaceship, otherSpaceship.Position, otherSpaceship.Velocity, 0.15f);
             InputData input = new InputData(thrust, targetOrient, needShoot, needMine, needShockwawe);
             needMine = false;
             needShockwawe = false;
