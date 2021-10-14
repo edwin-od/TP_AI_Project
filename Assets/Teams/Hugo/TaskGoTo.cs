@@ -28,17 +28,19 @@ public class TaskGoTo : Action
     {
         //if()
         count += Time.deltaTime;
-        Debug.Log("count : " + hyperion.mySpaceship.Owner + " || "  + count);
+        //Debug.Log("count : " + hyperion.mySpaceship.Owner + " || "  + count);
         if (count >= abandonTime)
         {
             hyperion.isBlocked = true;
             return TaskStatus.Failure;
         }
-
-        for (int i=0; i < hyperion.currentData.WayPoints.Count; i++) {
-            if(hyperion.currentData.WayPoints[i].Position == target.Value) {
-                if (hyperion.mySpaceship.Owner == hyperion.currentData.WayPoints[i].Owner) {
-                    return TaskStatus.Failure;
+        if (Vector2.Distance(target.Value, Player.Value) > hyperion.currentData.WayPoints[0].Radius)
+        {
+            for (int i = 0; i < hyperion.currentData.WayPoints.Count; i++) {
+                if (hyperion.currentData.WayPoints[i].Position == target.Value) {
+                    if (hyperion.mySpaceship.Owner == hyperion.currentData.WayPoints[i].Owner) {
+                        return TaskStatus.Failure;
+                    }
                 }
             }
         }

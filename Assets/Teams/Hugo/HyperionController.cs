@@ -33,6 +33,7 @@ namespace Hyperion
         {
             currentData = data;
             mySpaceship = spaceship;
+            
             SpaceShipView otherSpaceship = data.GetSpaceShipForOwner(1 - spaceship.Owner);
             if (!PointSet)
             {
@@ -47,6 +48,7 @@ namespace Hyperion
 
             targetOrient = NormaliseValue(Orientation.Value);
 
+            needShoot = AimingHelpers.CanHit(spaceship, otherSpaceship.Position, otherSpaceship.Velocity, 0.5f);
             InputData input = new InputData(thrust, targetOrient, needShoot, needMine, needShockwawe);
             needMine = false;
             needShockwawe = false;
