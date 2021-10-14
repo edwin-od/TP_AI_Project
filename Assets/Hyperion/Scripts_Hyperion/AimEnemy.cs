@@ -1,19 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using BehaviorDesigner.Runtime;
 using DoNotModify;
 using BehaviorDesigner.Runtime.Tasks;
+using BehaviorDesigner.Runtime;
 
 namespace Hyperion
 {
-    public class FollowEnemyAndShoot : MonoBehaviour
+    public class AimEnemy : Action
     {
         private HyperionController hyperion;
         public BehaviorTree behaviourTree;
         SpaceShipView otherSpaceship;
-        // Start is called before the first frame update
-        void Start()
+
+        public override void OnStart()
         {
             hyperion = gameObject.GetComponent<HyperionController>();
             otherSpaceship = hyperion.currentData.GetSpaceShipForOwner(1 - hyperion.mySpaceship.Owner);
@@ -23,10 +23,5 @@ namespace Hyperion
             behaviourTree.SetVariableValue("Rotation", rot);
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }

@@ -1,27 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using BehaviorDesigner.Runtime;
 using DoNotModify;
 using BehaviorDesigner.Runtime.Tasks;
+using BehaviorDesigner.Runtime;
 
 namespace Hyperion
 {
-    public class GetHitEnemy : Action
+    public class GetHitTime : Action
     {
         private HyperionController hyperion;
-        SpaceShipView otherSpaceship;
+        SpaceShipView otherSpaceship, currentSpaceship;
+        public SharedVector2 ship;
 
         public override void OnStart()
         {
             hyperion = gameObject.GetComponent<HyperionController>();
             otherSpaceship = hyperion.currentData.GetSpaceShipForOwner(1 - hyperion.mySpaceship.Owner);
-            
+            if(ship.Name == "PlayerPosition")
+            {
+                currentSpaceship = hyperion.mySpaceship;
+            }
+            else
+            {
+                currentSpaceship = otherSpaceship;
+            }
         }
 
         public override TaskStatus OnUpdate()
         {
-            if (otherSpaceship.HitCount > 0)
+            //Debug.Log("hitcount : " + currentSpaceship.HitCount);
+            if (currentSpaceship.HitCount > 0)
             {
                 return TaskStatus.Success;
             }
