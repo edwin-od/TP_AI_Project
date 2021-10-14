@@ -19,17 +19,20 @@ namespace Hyperion
         public bool shipDrifting = false;
         public float detectionRange;
         public GameData currentData;
+        public SpaceShipView mySpaceship;
 
         public BehaviorTree behaviourTree;
 
         public override void Initialize(SpaceShipView spaceship, GameData data)
         {
-
+            currentData = data;
+            mySpaceship = spaceship;
         }
 
         public override InputData UpdateInput(SpaceShipView spaceship, GameData data)
         {
             currentData = data;
+            mySpaceship = spaceship;
             SpaceShipView otherSpaceship = data.GetSpaceShipForOwner(1 - spaceship.Owner);
             if (!PointSet)
             {
@@ -40,7 +43,7 @@ namespace Hyperion
             //behaviourTree.SetVariableValue("EnemyPosition",  otherSpaceship.Position);
             behaviourTree.SetVariableValue("PlayerPosition", spaceship.Position);
 
-            Vector2 closestPos = Vector2.zero;
+            /*Vector2 closestPos = Vector2.zero;
             for (int i = 0; i < data.WayPoints.Count; i++)
             {
                 if ((data.WayPoints[i].Owner == otherSpaceship.Owner || data.WayPoints[i].Owner == -1))
@@ -77,16 +80,11 @@ namespace Hyperion
                     }
                 }
             }
-
-            behaviourTree.SetVariableValue("TargetPos", closestPos);
+            behaviourTree.SetVariableValue("TargetPos", closestPos);*/
 
             Orientation = (SharedFloat)behaviourTree.GetVariable("Rotation");
+
             targetOrient = NormaliseValue(Orientation.Value);
-
-            float highBound = NormaliseValue(targetOrient + detectionRange);
-            float lowBound = NormaliseValue(targetOrient - detectionRange);
-
-            thrust = 1f;
 
             //Debug.Log("cpcococol : " + Vector2.Distance(spaceship.Position, closestPos));
             //if(Vector2.Distance(spaceship.Position, closestPos) < 2f)
