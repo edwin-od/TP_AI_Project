@@ -3969,9 +3969,7 @@ MonoBehaviour:
   - {fileID: 352558042}
   - {fileID: 1079645155}
   _debugControllerSO: {fileID: 11400000, guid: f1b8b3b2876be244d9107938012a5207, type: 2}
-  _mapRoot: {fileID: 2127158556}
   _gameDuration: 60
-  chrono: 0
 --- !u!1 &2127158556
 GameObject:
   m_ObjectHideFlags: 0
@@ -4104,12 +4102,12 @@ PrefabInstance:
     - target: {fileID: 8544637535006246791, guid: ddec9c444f5700247bafd0707e3dfc93,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9
+      value: -8.14
       objectReference: {fileID: 0}
     - target: {fileID: 8544637535006246791, guid: ddec9c444f5700247bafd0707e3dfc93,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.82
       objectReference: {fileID: 0}
     - target: {fileID: 8544637535006246791, guid: ddec9c444f5700247bafd0707e3dfc93,
         type: 3}
