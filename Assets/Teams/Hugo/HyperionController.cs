@@ -109,7 +109,7 @@ namespace Hyperion
             InputData input = new InputData(thrust, targetOrient, needShoot, needMine, needShockwawe);
             needMine = false;
             needShockwawe = false;
-            needShoot = false;
+            //needShoot = false;
 
             return input;
 

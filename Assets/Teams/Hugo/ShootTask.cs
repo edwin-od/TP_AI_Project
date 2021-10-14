@@ -8,15 +8,17 @@ using Hyperion;
 
 public class ShootTask : Action
 {
-    private HyperionController hyperion; 
+    private HyperionController hyperion;
+    public BehaviorTree behaviourTree;
     public SharedVector2 Player;
-    bool canShoot;
+    bool canShoot = false;
     SpaceShipView otherSpaceship;
 
     public override void OnStart()
     {
+        canShoot = false;
         hyperion = gameObject.GetComponent<HyperionController>();
-        otherSpaceship = hyperion.currentData.GetSpaceShipForOwner(1 - hyperion.SelfShip.Owner);
+        otherSpaceship = hyperion.currentData.GetSpaceShipForOwner(1 - hyperion.mySpaceship.Owner);
         Vector2 shipToWaypoint = new Vector2(otherSpaceship.Position.x - Player.Value.x, otherSpaceship.Position.y - Player.Value.y);
         Debug.DrawRay(Player.Value, shipToWaypoint, Color.yellow);
         RaycastHit2D[] hits = Physics2D.RaycastAll(Player.Value, shipToWaypoint.normalized, shipToWaypoint.magnitude);
@@ -24,11 +26,14 @@ public class ShootTask : Action
         {
             if (hits[k].collider)
             {
-                
-                if(hits[k].transform.tag == "Player" && (Vector2)hits[k].transform.position != hyperion.SelfShip.Position && hits[k].transform.tag != "Asteroid")
+                float angle = Mathf.Atan2(shipToWaypoint.y, shipToWaypoint.x) * Mathf.Rad2Deg;
+
+                if (hits[k].transform.tag == "Player" && (Vector2)hits[k].transform.position != hyperion.mySpaceship.Position && hits[k].transform.tag != "Asteroid")
                 {
                     Debug.Log("can shoot " + hits[k].transform.gameObject.name);
+                    //hyperion.needShoot = AimingHelpers.CanHit(hyperion.mySpaceship, otherSpaceship.Position, otherSpaceship.Velocity, 0.15f);
                     canShoot = true;
+
                 }
 
             }
@@ -41,10 +46,12 @@ public class ShootTask : Action
         Debug.DrawRay(Player.Value, shipToWaypoint, Color.yellow);
         if (canShoot)
         {
-            hyperion.needShoot = AimingHelpers.CanHit(hyperion.SelfShip, otherSpaceship.Position, otherSpaceship.Velocity, 0.15f);
-            canShoot = false;
+            behaviourTree.SetVariableValue("TargetPos", otherSpaceship.Position);
+            hyperion.needShoot = AimingHelpers.CanHit(hyperion.mySpaceship, otherSpaceship.Position, otherSpaceship.Velocity, 0.15f);
         }
+        //return TaskStatus.Running;
+        if(hyperion.needShoot) return TaskStatus.Success;
+        else{ return TaskStatus.Failure; }
         //if(hyperion.needShoot) hyperion.needShoot = false;
-        return TaskStatus.Success;
     }
 }
