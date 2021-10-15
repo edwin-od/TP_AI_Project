@@ -46,15 +46,30 @@ namespace Hyperion
             if (spaceship.Energy > spaceship.ShootEnergyCost)
             {
                 float curEnerg = spaceship.Energy;
-                Debug.DrawRay(spaceship.Position, spaceship.Velocity.normalized, Color.red);
-                RaycastHit2D[] hits = Physics2D.RaycastAll(spaceship.Position, spaceship.Velocity.normalized);
+                RaycastHit2D[] hits = Physics2D.RaycastAll(spaceship.Position, new Vector3(0, Mathf.Sin(Mathf.Deg2Rad * spaceship.Orientation), Mathf.Cos(Mathf.Deg2Rad * spaceship.Orientation)), Vector2.Distance(spaceship.Position, otherSpaceship.Position));
+                bool canShoot = true;
+                for(int k = 0; k < hits.Length; k++) 
+                {
+                    if (hits[k].collider) 
+                    {
+                        if (hits[k].transform.tag == "Asteroid" || hits[k].transform.tag == "Wall")
+                        {
+                            canShoot = false;
+                            break;
+                        }
+                    }
+                }
 
-                needShoot = AimingHelpers.CanHit(spaceship, otherSpaceship.Position, otherSpaceship.Velocity, 0.5f);
-                if (needShoot && data.Bullets.Count == 0)
-                    curEnerg -= spaceship.ShootEnergyCost;
-                else
-                    needShoot = false;
+                if(canShoot) 
+                {
+                    needShoot = AimingHelpers.CanHit(spaceship, otherSpaceship.Position, otherSpaceship.Velocity, 0.5f);
+                    if (needShoot && data.Bullets.Count == 0)
+                        curEnerg -= spaceship.ShootEnergyCost;
+                    else
+                        needShoot = false;
+                }
 
+                hits = Physics2D.RaycastAll(spaceship.Position, spaceship.Velocity.normalized);
                 if (curEnerg > spaceship.ShockwaveEnergyCost)
                 {
                     for (int k = 0; k < hits.Length; k++)
